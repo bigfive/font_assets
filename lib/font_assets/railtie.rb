@@ -11,7 +11,7 @@ module FontAssets
       insert_target = if Rails.application.config.serve_static_assets
         'ActionDispatch::Static'
       else
-        'Rack::Runtime'
+        'Rack::Lock'
       end
 
       app.middleware.insert_before insert_target, FontAssets::Middleware, config.font_assets.origin, config.font_assets.options
